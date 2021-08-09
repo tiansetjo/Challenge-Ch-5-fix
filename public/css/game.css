@@ -1,0 +1,146 @@
+/* logo */
+
+body {
+    background-color: #9c835f;
+  }
+  li {
+    list-style-type: none;
+  }
+  .logo {
+    font-size: 36px;
+    font-family: sans-serif;
+    position: absolute;
+    left: 5px;
+    padding: 0;
+    margin: 0;
+    color: #724c21;
+  }
+  
+  /* logo game */
+  .imagehead {
+    position: absolute;
+    left: 35px;
+    top: 10px;
+    padding: 0;
+    margin: 0;
+  }
+  /* judul game */
+  .suitname {
+    font-size: 36px;
+    font-family: sans-serif;
+    position: absolute;
+    left: 80px;
+    padding: 0;
+    margin: 0;
+    color: #f9b23d;
+  }
+  
+  /* container player */
+  .container1-sm {
+    position: absolute;
+    left: 20%;
+    top: 10%;
+  }
+  
+  /* container computer */
+  .container2-sm {
+    position: absolute;
+    left: 60%;
+    top: 10%;
+  }
+  
+  /* vs */
+  .vs {
+    position: absolute;
+    left: 33%;
+    top: 45%;
+    padding: 0%;
+    margin: 0%;
+  }
+  
+  /* tombol refresh */
+  .refresh {
+    cursor: grab;
+    position: absolute;
+    left: 46%;
+    top: 80%;
+    padding: 0%;
+    margin: 0%;
+  }
+  
+  /* pilihan computer */
+  .player li .batu:hover {
+    margin: 10px 20px;
+    background-color: #c4c4c4;
+    padding: 10px;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+  
+  .player li .gunting:hover {
+    margin: 10px 20px;
+    background-color: #c4c4c4;
+    padding: 10px;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+  
+  .player li .kertas:hover {
+    margin: 10px 20px;
+    background-color: #c4c4c4;
+    padding: 10px;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+  /* style player */
+  .batu,
+  .gunting,
+  .kertas {
+    transition: 0.3s;
+    position: relative;
+    top: 0;
+    cursor: pointer;
+  }
+  /* ID hasil */
+  #info {
+    width: 270px;
+    height: 125px;
+    position: absolute;
+    left: 43%;
+    margin-left: -75px;
+    top: 52%;
+    margin-top: -30px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+    color: #ffffff;
+    font-size: 26px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    font-size: 50px;
+  }
+  
+  /* class add hasil */
+  .infostyle {
+    background-color: #4c9654;
+    color: #ffffff;
+    -webkit-transform: rotate(-15deg);
+    -moz-transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    -o-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+  
+  /* class add pilihan comp */
+  .hover {
+    margin: 10px 20px;
+    background-color: #c4c4c4;
+    padding: 10px;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+  /*  class add tombol refresh*/
+  .new {
+    color: #bd0000;
+    font-size: 144px;
+  }
+  

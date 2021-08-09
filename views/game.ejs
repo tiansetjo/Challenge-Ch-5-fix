@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/game.css" />
+    <title>Suit</title>
+  </head>
+  <body>
+    <!--logo atas  -->
+    <div class="float-sm-start">
+      <p class="logo"><</p>
+      <img class="imagehead" width="30" height="30" src="img/head.png" alt="img" />
+      <p class="suitname" style="color: #f9b23d">ROCK PAPER SCISSORS</p>
+    </div>
+
+    <!-- container player -->
+    <div class="container1-sm">
+      <div class="area-player">
+        <p style="color: black; font-size: 36px; font-family: sans-serif">PLAYER</p>
+        <ul class="player" style="text-align: center">
+          <li>
+            <img src="img/batu.png" style="width: 128px; height: 92px; margin: 20px" class="batu" />
+          </li>
+          <li>
+            <img src="img/kertas.png" style="width: 90px; height: 120px; margin: 20px" class="kertas" />
+          </li>
+          <li>
+            <img src="img/gunting.png" style="width: 128px; height: 92px; margin: 20px" class="gunting" />
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- container computer -->
+    <div class="container2-sm">
+      <div class="area-computer">
+        <p style="color: black; font-size: 36px; font-family: sans-serif">COMPUTER</p>
+        <ul class="com" style="text-align: center">
+          <li>
+            <img src="img/batu.png" style="width: 128px; height: 92px; margin: 20px" id="batu" />
+          </li>
+          <li>
+            <img src="img/kertas.png" style="width: 90px; height: 120px; margin: 20px" id="kertas" />
+          </li>
+          <li>
+            <img src="img/gunting.png" style="width: 128px; height: 92px; margin: 20px" id="gunting" />
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- container hasil -->
+    <div id="info">
+      <p class="vs" style="font-size: 100px; color: #bd0000">VS</p>
+    </div>
+    <!-- container tombol refresh -->
+    <div id="refresh" class="refresh-sm">
+      <img src="img/refresh.png" style="width: 50px; height: 50px" class="refresh" />
+    </div>
+
+    <!-- Content here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        //fungsi random komputer
+function getPilihanComputer() {
+  let computer = Math.random();
+  if (computer < 0.34) return "gunting";
+  if (computer >= 0.34 && computer < 0.67) return "batu";
+  return "kertas";
+}
+
+// rules game
+function getHasil(computer, player) {
+  if (player == computer) return "DRAW";
+  if (player == "gunting") return computer == "batu" ? "PLAYER <br /> WIN" : "COMPUTER <br /> WIN";
+  if (player == "batu") return computer == "gunting" ? "PLAYER <br /> WIN" : "COMPUTER <br /> WIN";
+  if (player == "kertas") return computer == "batu" ? "PLAYER <br /> WIN" : "COMPUTER <br /> WIN";
+}
+
+// conten game
+let pilihan = document.querySelectorAll("li img");
+pilihan.forEach(function (pil) {
+  pil.addEventListener("click", function () {
+    let pilihanComputer = getPilihanComputer();
+    let pilihanPlayer = pil.className;
+    let hasil = getHasil(pilihanComputer, pilihanPlayer);
+    let imgComputer = document.querySelector(".img-komputer");
+    let info = document.getElementById("info");
+    info.classList.add("infostyle");
+    info.innerHTML = hasil;
+    let x = pilihanComputer;
+    y = document.getElementById(`${x}`);
+    y.classList.add("hover");
+    let refresh = document.getElementById("refresh");
+    refresh.addEventListener("click", function () {
+      let x = pilihanComputer;
+      y = document.getElementById(`${x}`);
+      y.classList.remove("hover");
+      let info2 = document.getElementById("info");
+      info2.classList.remove("infostyle");
+      let info3 = document.getElementById("info");
+      info3.classList.add("new");
+      info3.innerHTML = "VS";
+    });
+  });
+});
+
+    </script>
+  </body>
+</html>

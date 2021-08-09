@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="image-login" style="margin: 0; padding: ;">
+      <img style = "max-width: 100%; height: 580px; width: 1500px;" src="img/violet.jpg" alt="">
+
+    <div class="user-box" style="border-radius: 5px; background-color: blueviolet; width: 30%; height: 66%; position: absolute; left: 35%; top : 10%; margin: 0; padding: 0%;">
+      <div style="font-size: 60px; text-align: center; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: white;">Login</div>
+    <div class="login">
+      <div style= "text-align: center;">
+        <p>Username :</p>
+        <input type="text" name="username" id="username" />
+      </div>
+      <div  style= "text-align: center;">
+        <p>Password :</p>
+        <input type="password" name="password" id="password" />
+      </div>
+      <div  style= "text-align: center;">
+        <p>Email :</p>
+        <input type="email" name="email" id="email" />
+      </div>
+      <div style="margin: 10px; text-align: center;">
+        <button type="button" onclick="OnClick()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script>
+      let dataSession = sessionStorage.getItem("login-data");
+      if (dataSession != null) {
+        console.log(dataSession);
+        window.location.href = "/";
+      }
+
+      let OnClick = () => {
+        console.log("submited");
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let email = document.getElementById("email").value;
+
+        let config = {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password,
+            email: email,
+          }),
+        };
+        fetch("/login", config)
+          .then((response) => response.json())
+          .then((result) => {
+            sessionStorage.setItem("login-data", JSON.stringify(result));
+            console.log (result)
+            if (result.message === "Login Successful") {
+            alert(result.message)
+            window.location.href = "/"
+          }
+          })
+          .catch((err) => console.log(err));
+      };
+    </script>
+  </body>
+</html>
